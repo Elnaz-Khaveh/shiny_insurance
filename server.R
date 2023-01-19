@@ -1,4 +1,5 @@
 server <- function(input, output,session) {
+  class(insurance)
 
   factor_variable_selected <- eventReactive(input$render_plot, {
     input$factor_variable_selected
@@ -12,9 +13,11 @@ server <- function(input, output,session) {
 
   output$insurance_plot <- renderPlot({
 
-    ggplot(data = ins_data) +
-    ggplot(aes(x=(!!sym(numeric_variable_selected())), y=charges, color=(!!sym(factor_variable_selected()))))+
-    geom_point(size=2)+
+    ggplot(data = insurance,
+           aes(x=(!!sym(numeric_variable_selected())),
+               y=charges,
+               color=(!!sym(factor_variable_selected())))) +
+    geom_point(size=2) +
     theme(legend.position = "top")
 
   })
