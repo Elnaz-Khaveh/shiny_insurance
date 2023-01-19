@@ -5,5 +5,4 @@ library(ggplot2)
 
 data(insurance, package = "myPack")
 
-force(insurance)
 enableBookmarking()
